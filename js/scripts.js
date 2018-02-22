@@ -1,18 +1,12 @@
+// Business logic not included because it will remain the same. 
+
 $(document).ready(function() {
-  $("form#insurance").submit(function(event) {
-    var age = parseInt($("input#age").val());
-    var gender = $("select#gender").val();
-
-    var quote = (100 - age) * 3;
-    if (gender === 'male' && age < 26) {
-      quote += 50;
-    }
-    if (!under18) {
-      // do something only adults can do
-    }
-    $("#rate").text(quote);
-    $("#quote").show()
-
+  $("form#calculator").submit(function() {
     event.preventDefault();
+    var number1 = parseInt($("#input1").val());
+    var number2 = parseInt($("#input2").val());
+    var operator = $("input:radio[name=operator]:checked").val();
+    var result = add(number1, number2);
+    $("#output").text(result);
   });
 });
