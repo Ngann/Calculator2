@@ -1,12 +1,18 @@
 $(document).ready(function() {
-  var age = parseInt(prompt("How old are you?"));
+  $("form#insurance").submit(function(event) {
+    var age = parseInt($("input#age").val());
+    var gender = $("select#gender").val();
 
-  if (age > 21) {
-    $('#drinks').show();
-  } else if (age === 21) {
-    alert("Now don't go crazy!");
-    $('#drinks').show();
-  } else {
-    $('#under-21').show();
-  }
+    var quote = (100 - age) * 3;
+    if (gender === 'male' && age < 26) {
+      quote += 50;
+    }
+    if (!under18) {
+      // do something only adults can do
+    }
+    $("#rate").text(quote);
+    $("#quote").show()
+
+    event.preventDefault();
+  });
 });
